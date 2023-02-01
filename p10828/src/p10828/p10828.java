@@ -8,7 +8,7 @@ import java.util.Stack;
 public class p10828 {
 
 	public static void main(String[] args) throws IOException {
-		Stack<Integer> st = new Stack<Integer>();
+		Stack<String> st = new Stack<String>();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		int round = Integer.parseInt(br.readLine());
@@ -33,9 +33,9 @@ public class p10828 {
 					System.out.println(st.size());
 			}
 			else {
-				st.push(Integer.parseInt(command[1]));
+				st.push(command[1]);
 			}
-        }
+		}
 	}
 
 }
