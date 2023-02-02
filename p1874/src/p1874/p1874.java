@@ -35,5 +35,4 @@ public class p1874 {
 		bufferedWriter.flush();
 		return;
 	}
-
 }
