@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class p1244 {
 
@@ -12,7 +14,7 @@ public class p1244 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder sb = new StringBuilder();
-		Integer.parseInt(br.readLine()); //½ºÀ§Ä¡ ±æÀÌ ¹ö¸²
+		Integer.parseInt(br.readLine()); //ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		char SWMap[] = br.readLine().replaceAll(" ", "").toCharArray();
 		int MAPLength = SWMap.length;
 		int round = Integer.parseInt(br.readLine());
@@ -29,15 +31,19 @@ public class p1244 {
 				num--;
 				while(num - i >= 0 && num + i < MAPLength) {
 					if(SWMap[num - i] == SWMap[num + i]) {
-						SWMap[num - i] = SWMap[num - i] == '1'? '0':'1';
-						SWMap[num + i] = SWMap[num - i];
+						for(int j = num - i; j <= num + i; j++) {
+							SWMap[j] = SWMap[j] == '1'? '0':'1';
+						}
 					}
 					i++;
 				}
 			}
-			System.out.println(SWMap);
 		}
-		
+		for(int i= 1; i<=MAPLength;i++)
+			sb.append(SWMap[i-1]).append(i%20 == 0 ? "\n":" ");
+		System.out.println(sb.toString());
+		bw.close();
+		br.close();
 	}
 
 }
