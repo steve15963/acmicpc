@@ -35,9 +35,8 @@ public class p1244 {
 					i++;
 				}
 			}
-			System.out.println(SWMap);
 		}
-		
+		System.out.println(SWMap);
 	}
 
 }
