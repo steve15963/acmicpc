@@ -1,14 +1,17 @@
 package p11659;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class p11659 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder sb = new StringBuilder();
 		String lengthS[] = br.readLine().split(" "); 
 		StringTokenizer st = new StringTokenizer(br.readLine()," ");
@@ -28,6 +31,8 @@ public class p11659 {
 			int end = Integer.parseInt(point[1]);
 			sb.append(data[end] - data[start]).append("\n");
 		}
-		System.out.println(sb.toString());
+		bw.write(sb.toString());
+		bw.flush();
+		bw.close();
 	}
 }
