@@ -42,5 +42,4 @@ public class p10845 {
 		bufferedWriter.write(builder.toString());
 		bufferedWriter.flush();
 	}
-
 }
