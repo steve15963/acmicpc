@@ -34,6 +34,8 @@ public class p1244{
 		}
 		for(int i= 1; i<=MAPLength;i++)
 			sb.append(SWMap[i-1]).append(i%20 == 0 ? "\n":" ");
-		System.out.println(sb.toString());
+		bw.write(sb.toString());
+		bw.flush();
+		bw.close();
 	}
 }
