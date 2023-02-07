@@ -25,11 +25,9 @@ public class p1244{
 			else {
 				int i = 0;
 				num--;
-				while(num - i >= 0 && num + i < MAPLength) {
-					if(SWMap[num - i] == SWMap[num + i]) {
-						SWMap[num - i] = SWMap[num - i] == '1'? '0':'1';
-						SWMap[num + i] = SWMap[num - i];
-					}
+				while(num - i >= 0 && num + i < MAPLength && SWMap[num - i] == SWMap[num + i]) {
+					SWMap[num - i] = SWMap[num - i] == '1'? '0':'1';
+					SWMap[num + i] = SWMap[num - i];
 					i++;
 				}
 			}
