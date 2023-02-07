@@ -10,7 +10,7 @@ public class p1244{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder sb = new StringBuilder();
-		Integer.parseInt(br.readLine()); //����ġ ���� ����
+		Integer.parseInt(br.readLine());
 		char SWMap[] = br.readLine().replaceAll(" ", "").toCharArray();
 		int MAPLength = SWMap.length;
 		int round = Integer.parseInt(br.readLine());

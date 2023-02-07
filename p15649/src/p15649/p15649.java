@@ -25,7 +25,6 @@ public class p15649 {
 				visit[i] = false;
 			}
 		}
-		
 	}
 
 	public static void main(String[] args) throws IOException {
