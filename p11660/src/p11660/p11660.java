@@ -30,13 +30,14 @@ public class p11660 {
 		for(int i=0; i < N ;i++) {
 			String test = br.readLine();
 			String point[] = test.split(" ");
-			int ax = Integer.parseInt(point[0]);
-			int ay = Integer.parseInt(point[1]);
-			int bx = Integer.parseInt(point[2]);
-			int by = Integer.parseInt(point[3]);
+			int starty = Integer.parseInt(point[0]);
+			// 자기 자신을 포함하기 때문에 - 1;
+			int startx = Integer.parseInt(point[1]) - 1;
+			int endy = Integer.parseInt(point[2]);
+			int endx = Integer.parseInt(point[3]);
 			int sum = 0;
-			for(int j = ay;j <= by;j++) {
-				sum += data[j][bx] - data[j][ax];
+			for(int j = starty;j <= endy;j++) {
+				sum += data[j][endx] - data[j][startx];
 			}
 			sb.append(sum).append("\n");
 		}
