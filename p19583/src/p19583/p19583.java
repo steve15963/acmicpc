@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashSet;
-
 import java.util.Set;
 
 class HourMin{
@@ -15,9 +14,19 @@ class HourMin{
 		else if(hour == b.hour && min < b.min)return true;
 		return false;
 	}
+	public boolean lowerEquals(HourMin b) {
+		if(hour < b.hour) return true;
+		else if(hour == b.hour && min <= b.min)return true;
+		return false;
+	}
 	public boolean bigger(HourMin b) { //a가 더 큰가?
 		if(hour > b.hour) return true;
 		else if(hour == b.hour && min > b.min)return true;
+		return false;
+	}
+	public boolean biggerEquals(HourMin b) { //a가 더 큰가?
+		if(hour > b.hour) return true;
+		else if(hour == b.hour && min >= b.min)return true;
 		return false;
 	}
 	public boolean equals(HourMin b) {
@@ -48,25 +57,14 @@ public class p19583 {
 		while((comment = br.readLine()) !=null ) {
 			String commentSplit[] = comment.split(" ");
 			HourMin hm = new HourMin(commentSplit[0]);
-			if(Q.lower(hm)) break;
-			else if(S.bigger(hm) || S.equals(hm))
+			if(S.biggerEquals(hm))
 				check.add(commentSplit[1]);
-			else if(S.lower(hm) && E.bigger(hm) )
-				continue;
-			else if((E.lower(hm) || E.equals(hm)) && (Q.bigger(hm) || Q.equals(hm)))
+			else if((E.lowerEquals(hm)) && (Q.biggerEquals(hm)))
 				quick.add(commentSplit[1]);
 		}
-		if(check.size() > quick.size()) {
-			for(String id:quick) {
-				if(check.contains(id)) count++;
-			}
-		}else {
-			for(String id:check) {
-				if(quick.contains(id)) count++;
-			}
+		for(String id:quick) {
+			if(check.contains(id)) count++;
 		}
 		System.out.println(count);
-		
 	}
-
 }
