@@ -20,6 +20,7 @@ public class p11659 {
 		int data[] = new int[M+1];
 		data[0] = 0;
 		int i = 1;
+		//부분합 생성
 		while(st.hasMoreTokens()) {
 			data[i] = data[i-1] + Integer.parseInt(st.nextToken());
 			i++;
@@ -29,6 +30,7 @@ public class p11659 {
 			String point[] = br.readLine().split(" ");
 			int start = Integer.parseInt(point[0]) - 1;
 			int end = Integer.parseInt(point[1]);
+			//최대합 - 최소합 = 부분합
 			sb.append(data[end] - data[start]).append("\n");
 		}
 		bw.write(sb.toString());
