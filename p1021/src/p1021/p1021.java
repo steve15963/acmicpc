@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 
 public class p1021 {
-
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String NM[] = br.readLine().split(" ");
@@ -25,7 +24,7 @@ public class p1021 {
 		int count  = 0;
 		for(int i = 0; i < M ;i++) {
 			int index = qu.indexOf(data[i]);
-			if(index >= qu.size() / 2 ) {
+			if(index >= qu.size() / 2.0 ) {
 				while(data[i] != qu.peek()) {
 					qu.addFirst(qu.pollLast());
 					count++;
@@ -41,9 +40,7 @@ public class p1021 {
 				qu.poll();
 				//count++;
 			}
-			
 		}
 		System.out.println(count);
 	}
-
 }
