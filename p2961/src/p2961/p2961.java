@@ -19,15 +19,11 @@ public class p2961 {
 		for(int i = 0; i < round; i++) {
 			if(!visit[i]) {
 				visit[i] = true;
-				sinTotal *= sin[i];
-				ssunTotal += ssun[i];
 				min = Math.min(
 						min,
 						Math.abs(sinTotal-ssunTotal)
 				);
-				recall(cnt+1,sinTotal,ssunTotal);
-				sinTotal /= sin[i];
-				ssunTotal -= ssun[i];
+				recall(cnt+1,sinTotal * sin[i],ssunTotal + ssun[i]);
 				visit[i] = false;
 			}
 		}
