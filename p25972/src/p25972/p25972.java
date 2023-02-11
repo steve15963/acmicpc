@@ -14,7 +14,5 @@ public class p25972 {
 		for(int i = 1; i<= N; i++) {
 			
 		}
-
 	}
-
 }
