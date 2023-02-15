@@ -11,14 +11,15 @@ public class p23284 {
 	static int selected[];
 	static void dfs(int cnt,int num) {
 		if(cnt == length) {
+			
 			System.out.println(Arrays.toString(selected));
 			return;
 		}
 		for(int i = 0 ; i < length;i++) {
-			if(!visit[i] && i > num - 2) {
+			if(!visit[i] && i >= num - 1) {
 				visit[i] = true;
 				selected[cnt] = i + 1;
-				dfs(cnt+1,i);
+				dfs(cnt+1, i);
 				visit[i] = false;
 			}
 		}
