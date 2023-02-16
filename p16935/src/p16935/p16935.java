@@ -102,22 +102,22 @@ public class p16935 {
 	}
 	
 	static void spliteRotate(int map[][],int N,int M) {
-		int splitMap[][][] = arraySplite(map, N, M);
-		int tSplitMap[][] = splitMap[0];
-		splitMap[0] = splitMap[3];
-		splitMap[3] = splitMap[2];
-		splitMap[2] = splitMap[1];
-		splitMap[1] = tSplitMap;
-		arrayMerge(splitMap, map, N, M);
+		int sliceMap[][][] = arraySplite(map, N, M);
+		int tSplitMap[][] = sliceMap[0];
+		sliceMap[0] = sliceMap[3];
+		sliceMap[3] = sliceMap[2];
+		sliceMap[2] = sliceMap[1];
+		sliceMap[1] = tSplitMap;
+		arrayMerge(sliceMap, map, N, M);
 	}
 	static void spliteCross(int map[][],int N,int M) {
-		int splitMap[][][] = arraySplite(map, N, M);
-		int tSplitMap[][] = splitMap[0];
-		splitMap[0] = splitMap[1];
-		splitMap[1] = splitMap[2];
-		splitMap[2] = splitMap[3];
-		splitMap[3] = tSplitMap;
-		arrayMerge(splitMap, map, N, M);
+		int sliceMap[][][] = arraySplite(map, N, M);
+		int tSplitMap[][] = sliceMap[0];
+		sliceMap[0] = sliceMap[1];
+		sliceMap[1] = sliceMap[2];
+		sliceMap[2] = sliceMap[3];
+		sliceMap[3] = tSplitMap;
+		arrayMerge(sliceMap, map, N, M);
 	}
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
