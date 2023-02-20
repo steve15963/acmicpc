@@ -14,6 +14,7 @@ public class p15686 {
 		int M = Integer.parseInt(st.nextToken());
 
 		ArrayList<Point> chiken = new ArrayList<Point>();
+		
 		ArrayList<Point> zip = new ArrayList<Point>();
 		
 		ArrayList<Point> selectChiekn = new ArrayList<Point>();
@@ -24,7 +25,6 @@ public class p15686 {
 				int t = Integer.parseInt(st.nextToken());
 				if(t == 1) 		zip.add(new Point(j, i));
 				else if(t == 2) chiken.add(new Point(j, i));
-				
 			}
 		}
 		Integer mask = 0;
