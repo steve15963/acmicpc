@@ -30,6 +30,7 @@ public class p2630 {
 		
 	}
 
+
 	private static void cut(int r, int c, int size) {
 		int half = size/2;
 		int sum = 0;
