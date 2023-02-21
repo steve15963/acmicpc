@@ -5,26 +5,29 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class p2447 {
-	static char map[][];
+	static boolean map[][];
+	static StringBuilder sb;
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		map = new char[N][N];
+		map = new boolean[N][N];
+		sb = new StringBuilder();
 		recall(0,0,N);
 		for(int i = 0; i < N; i++) {
 			for(int j = 0; j < N; j++) {
-				System.out.print(map[i][j] == '*' ? '*' :' ');
+				sb.append(map[i][j] ? '*' :' ');
 			}
-			System.out.println();
+			sb.append('\n');
 		}
+		System.out.println(sb.toString());
 	}
 
 	private static void recall(int y, int x, int size) {
 		if(size == 1) {
-			map[y][x] = '*';
+			map[y][x] = true;
 //			map[y][x+1] = '*';
 //			map[y][x+2] = '*';
-//			map[y+1][x] = '*';
+//			map[y+1][x] ='*';
 //			map[y+1][x+2] = '*';
 //			map[y+2][x] = '*';
 //			map[y+2][x+1] = '*';
@@ -43,5 +46,4 @@ public class p2447 {
 		recall(y + sizeD3 * 2	, x + sizeD3 * 2	, sizeD3);
 		return;
 	}
-
 }
