@@ -4,8 +4,10 @@ import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class p17135 {
@@ -46,22 +48,31 @@ public class p17135 {
 			}
 			for(int i = 0 ; i < N; i++) {
 				ArrayList<Point> killList = new ArrayList<Point>();
+				
+				for(int j = 0; j < N; j++) {
+					for(int k = 0 ; k < M; k++) {
+						System.out.print((copyMap[j][k] ? 1 : 0 )+ " ");
+					}
+					System.out.println();
+				}
+				System.out.println("");
+				
 				for(int j = 0; j < 3; j++) {
 					archerAiming(killList,selectedPosition[j]);
 				}
 				killCount += archerShoot(killList);
 				
 				for(int j = 0; j < N; j++) {
-					System.out.println(Arrays.toString(copyMap[j]));
+					for(int k = 0 ; k < M; k++) {
+						System.out.print((copyMap[j][k] ? 1 : 0 )+ " ");
+					}
+					System.out.println();
 				}
-				
-				System.out.println();
+				System.out.println("---------------------------");
 				
 				
 				move();
 			}
-			//System.out.println(Arrays.toString(selectedPosition));
-			//System.out.println(killCount);
 			maximumKillCount = Math.max(maximumKillCount, killCount);
 			return;
 		}
@@ -83,17 +94,40 @@ public class p17135 {
 		return killCount;
 	}
 	private static void archerAiming(ArrayList<Point> killList,int archerIndex) {
-		for(int i = 0 ; i < D; i++) {
-			for(int j = 0; j < M; j++) {
-				// i, j 몬스터 위치
-				// 0, selectedPosition[archerIndex]
-				if(copyMap[i][j] && i + Math.abs(j - archerIndex) + 1 <= D ) {
-					killList.add(new Point(j,i));
-					return;
-				}
-			}
+		if(copyMap[0][archerIndex]) {
+			killList.add(new Point(0,archerIndex));
+			return;
 		}
 		
+		Queue<Point> queue = new ArrayDeque<>();
+		final int dy[] = { 0, 0, 1};
+		final int dx[] = {-1, 1, 0};
+		boolean visit[][] = new boolean[N][M];
+		int distanse = 2;
+		queue.add(new Point(archerIndex,0));
+		while(!queue.isEmpty()) {
+			if(distanse > D) return;
+			for(int i = 0, size = queue.size(); i < size; i++) {
+				Point target = queue.poll();
+				for(int j = 0; j < 3; j++) {
+					int nextY = target.y + dy[j];
+					int nextX = target.x + dx[j];
+					if(isCan(nextY,nextX) && !visit[nextY][nextX]) {
+						if(copyMap[nextY][nextX]) {
+							killList.add(new Point(nextX,nextY));
+							return;
+						}else {
+							visit[nextY][nextX] = true;
+							queue.add(new Point(nextX,nextY));
+						}
+					}
+				}
+			}
+			distanse++;
+		}
+	}
+	private static boolean isCan(int nextY, int nextX) {
+		return 0 <= nextY && nextY < N && 0 <= nextX && nextX < M;
 	}
 	private static void move() {
 		for(int i = 1; i < N;i++) {
