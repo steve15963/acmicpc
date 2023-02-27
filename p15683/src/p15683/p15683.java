@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class p15683 {
@@ -37,24 +36,31 @@ public class p15683 {
 			st = new StringTokenizer(br.readLine());
 			for(int j = 0 ; j < M; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
+				// 벽의 수 카운팅
 				if(map[i][j] == 6) {
 					wall++;
+				//CCTV 리스트 구성
 				}else if(map[i][j] != 0)
 					CCTVList.add(new CCTV(j,i,map[i][j]));
 			}
 		}
 		int size = CCTVList.size();
+		// 조합 출력 하기 위한 배열
 		seletedValue = new int[size];
 		DFS(0,CCTVList,size,map,N,M);
+		
+		//전체 사이즈 - 칠해진 값 - 벽의 수
 		System.out.println(N*M - maximum - wall);
 	}
 
 	private static void DFS(int cnt, ArrayList<CCTV> CCTVList,int size, int[][] map,int N, int M) {
+		// 모든 리스트가 선택된다면.
 		if(cnt == size) {
 			int sum = 0;
 			for(int i = 0; i < size; i++) {
 				sum += seletedValue[i];
 			}
+			
 			
 //			for(int i = 0 ; i < N; i++) {
 //				System.out.println(Arrays.toString(map[i]));
@@ -66,14 +72,17 @@ public class p15683 {
 			maximum = Math.max(maximum, sum);
 			return;
 		}
+		//cnt번째 CCTV를 가져온다.
 		CCTV target = CCTVList.get(cnt);
 		int type = target.type;
 		
 		int copyMap[][];
 		
+		//CCTV 타입에 따라서 호출이 다르다.
 		if(type == 1) {
 			for(int d = 0 ; d < 4; d++) {
 				copyMap = new int[N][M];
+				// 맵 복사
 				copy(map,copyMap,N,M);
 				seletedValue[cnt] = draw1(copyMap,target.x,target.y,d,N,M);
 				DFS(cnt+1, CCTVList, size, copyMap, N, M);
@@ -118,6 +127,7 @@ public class p15683 {
 
 	private static int draw5(int map[][],int x, int y, int d, int n, int m) {
 		int count = 0;
+		// CCTV 타입이 5번인경우
 		if(d == 0) {
 			count += topSum(map,x,y,n,m);
 			count += bottomSum(map,x,y,n,m);
@@ -129,6 +139,7 @@ public class p15683 {
 
 	private static int draw4(int map[][],int x, int y, int d, int n, int m) {
 		int count = 0;
+		// CCTV 타입이 4번인경우
 		if(d == 0) {
 			count += leftSum(map,x,y,n,m);
 			count += topSum(map,x,y,n,m);
@@ -151,6 +162,7 @@ public class p15683 {
 
 	private static int draw3(int map[][],int x, int y, int d, int n, int m) {
 		int count = 0;
+		// CCTV 타입이 3번인경우
 		if(d == 0) {
 			count += topSum(map,x,y,n,m);
 			count += rightSum(map,x,y,n,m);
@@ -169,6 +181,7 @@ public class p15683 {
 
 	private static int draw2(int map[][],int x, int y, int d, int n, int m) {
 		int count = 0;
+		// CCTV 타입이 2번인경우
 		if(d == 0) {
 			count += topSum(map,x,y,n,m);
 			count += bottomSum(map,x,y,n,m);
@@ -182,6 +195,7 @@ public class p15683 {
 	// 상하 좌우
 	private static int draw1(int map[][],int x, int y, int d, int n, int m) {
 		int count = 0;
+		// CCTV 타입이 1번인경우
 		if(d == 0) {
 			count += topSum(map,x,y,n,m);
 		}else if(d == 1) {
