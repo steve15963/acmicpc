@@ -35,8 +35,6 @@ public class p1167_3 {
 		boolean visit[] = new boolean[V+1];
 		int dijkstraValue[] = new int[V+1];
 		
-		
-		
 		for(int i = 0 ; i < V+1; i++) {
 			graphList[i] = new PriorityQueue<Node>(Collections.reverseOrder());
 		}
@@ -52,12 +50,7 @@ public class p1167_3 {
 				graphList[from].add(new Node(to, value));
 			}
 		}
-		for(int i = 1 ; i < V; i++) {
-			DFS(dijkstraValue, graphList,visit, i, 0);
-			for(int j = 0 ; j < V+1; j++) {
-				dijkstraValue[j] = 0;
-			}
-		}
+
 		System.out.println(maxSumValue);
 	}
 	//
