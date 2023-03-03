@@ -51,8 +51,8 @@ public class p1753_2{
 		int distance[] = new int[V+1];
 		boolean visit[] = new boolean[V+1];
 		Arrays.fill(distance, Integer.MAX_VALUE);
-		distance[1] = 0;
-		PQ.add(new Node(K, distance[1]));
+		distance[K] = 0;
+		PQ.add(new Node(K, distance[K]));
 		while(!PQ.isEmpty()) {
 			Node node = PQ.poll();
 			int from = node.to;
