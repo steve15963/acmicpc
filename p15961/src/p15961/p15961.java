@@ -23,12 +23,13 @@ public class p15961 {
 			plate[i] = Integer.parseInt(br.readLine());
 		}
 		
+		boolean eaten[] = new boolean[D + 1];
+		
 		int max = 0;
 		
 		//시작 위치
 		for(int i = 0 ; i < N; i++) {
 			//먹은 음식 체크(음식번호가 1번부터 시작하므로. + 1)
-			boolean eaten[] = new boolean[D + 1];
 			int count = 0;
 			//먹을 음식 수
 			for(int j = 0; j < K; j ++) {
