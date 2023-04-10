@@ -57,12 +57,22 @@ public class p1708 {
 			@Override
 			public int compare(Node o1, Node o2) {
 				if(o1.angle == -1) {
-					o1.angle = Math.atan2(startNode.y - o1.y, startNode.x - o1.x);
+					o1.angle = Math.toDegrees(
+							Math.atan2(
+									startNode.y - o1.y,
+									startNode.x - o1.x
+							)
+					);
 				}
 				if(o2.angle == -1) {
-					o2.angle = Math.atan2(startNode.y - o2.y, startNode.x - o2.x);
+					o2.angle = Math.toDegrees(
+							Math.atan2(
+									startNode.y - o2.y,
+									startNode.x - o2.x
+							)
+					);
 				}
-				return 0;
+				return Double.compare(o1.angle, o2.angle);
 			}
 			
 		});
