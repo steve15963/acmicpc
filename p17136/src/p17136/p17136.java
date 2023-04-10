@@ -123,4 +123,6 @@ public class p17136 {
 	private static boolean isCan(int i, int j) {
 		return 0 <= i && i <= 10 && 0 <= j && j <= 10;
 	}
+
+
 }
